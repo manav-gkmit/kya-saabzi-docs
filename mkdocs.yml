@@ -30,12 +30,13 @@ theme:
         name: Switch to system preference
   
 markdown_extensions:
-  - toc:
-      permalink: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 nav:
   - Home: index.md
   - Use Cases:
     - Functional: use-cases/functional.md
-    - Business: use-cases/business.md
-              
