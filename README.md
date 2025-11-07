@@ -8,21 +8,26 @@
 
 ## Installation
 
+### Clone the repository for yourself
 ```console
+git clone https://github.com/manav-gkmit/kya-saabzi-docs.git  
+
+cd kya-saabzi-docs
+```
+
+### Initialize a virtual environment and install the dependencies
+```console
+python3 -m venv .venv  
+
 pip3 install -r requirements.txt
 
 ---> 100%
 ```
 
-```console
-cd your/preferred/directory  
-mkdocs new .  
+### Run the docs locally
+```console 
 mkdocs serve  
-```
 
-You should then see something like:
-
-```console
 INFO    -  Building documentation...
 INFO    -  Cleaning site directory
 INFO    -  Documentation built in 0.31 seconds
