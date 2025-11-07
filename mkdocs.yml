@@ -1,0 +1,41 @@
+site_name: Kya Saabzi Docs
+site_description: "Functional and Use Case documentation for the Kya Saabzi App"
+
+theme:
+  name: material
+  icon: 
+    logo: material/food-apple
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - toc.integrate
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/theme-light-dark
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: light-green
+      accent: light-green
+      toggle:
+        icon: material/lightbulb-on
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/lightbulb-off
+        name: Switch to system preference
+  
+markdown_extensions:
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Use Cases:
+    - Functional: use-cases/functional.md
+    - Business: use-cases/business.md
+              
