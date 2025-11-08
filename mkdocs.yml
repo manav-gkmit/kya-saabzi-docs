@@ -40,3 +40,5 @@ nav:
   - Home: index.md
   - Use Cases:
     - Functional: use-cases/functional.md
+  - Architecture:
+    - Data Modeling: architecture/data-model.md
