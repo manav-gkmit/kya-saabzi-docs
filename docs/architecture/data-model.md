@@ -19,7 +19,7 @@ erDiagram
 
     COOKLOGS {
         SERIAL id PK
-        INT owner_id FK
+        INT user_id FK
         INT dish_id FK
         DATE date_cooked
         TIMESTAMP created_at
@@ -56,7 +56,7 @@ erDiagram
 | Column | Type | Purpose |
 |:--------|:------|:---------|
 | `id` | `SERIAL PRIMARY KEY` | Unique identifier for each dish log |
-| `owner_id` | `INT REFERENCES users(id)` | Links each log to the user who created it |
+| `user_id` | `INT REFERENCES users(id)` | Links each log to the user who created it |
 | `dish_id` | `INT REFERENCES dishes(id)` | Links to the dish that user cooked |
 | `date_cooked` | `DATE NOT NULL` | The date the dish was cooked |
 | `created_at` | `TIMESTAMP` | When the log entry was made |

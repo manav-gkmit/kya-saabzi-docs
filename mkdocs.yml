@@ -42,3 +42,4 @@ nav:
     - Functional: use-cases/functional.md
   - Architecture:
     - Data Modeling: architecture/data-model.md
+    - Database Indices: architecture/indexing.md
