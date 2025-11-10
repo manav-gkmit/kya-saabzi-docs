@@ -1,6 +1,10 @@
 # Functional Use Case
 
-### Use Case 1: Sign-Up
+Outlines the main functional scenarios that describe how users interact with Kya Saabzi’s core features.
+
+---
+
+### Use Case 1: Sign-Up {data-toc-label="Sign-Up"}
 
 | Element            | Detail  |
 |:-------------------|:--------|
@@ -12,7 +16,7 @@
 |  **Basic Flow**    | <ul><li> User selects `Username` field and enters preferred username</li><li> User selects `Password` field and enters password </li><li> User clicks on the `Register` button </li><li> System stores the `username` & `password` in the database </li></ul>
 | **Post-Conditions**| User has been successfully registered
 
-### Use Case 2: Login
+### Use Case 2: Login {data-toc-label="Login"}
 
 | Element            | Detail  |
 |:-------------------|:--------|
@@ -24,7 +28,7 @@
 |  **Basic Flow**    | <ul><li> User selects `Username` field and enters registered username</li><li> User selects `Password` field and enters their password </li><li> User clicks on the `Login` button </li><li> System authenticates the user and logs them in </li></ul>
 | **Post-Conditions**| User has logged in successfully
 
-### Use Case 3: Add dish
+### Use Case 3: Add dish {data-toc-label="Add Dish"}
 
 | Element            | Detail  |
 |--------------------|---------|
@@ -36,7 +40,7 @@
 |  **Basic Flow**    | <ul><li> User enters the dish cooked today</li><li> User presses the `Submit` button </li><li> System stores the dish log in the database </li></ul>
 | **Post-Conditions**| Dish cooked today is stored.
 
-### Use Case 4: Get recommendation
+### Use Case 4: Get recommendation {data-toc-label="Get Recommendation"}
 
 | Element            | Detail  |
 |--------------------|---------|
@@ -48,7 +52,7 @@
 |  **Basic Flow**    | <ul><li>User selects how many recommendations they want</li><li> User clicks on the `Get recommendation` button </li></ul>
 | **Post-Conditions**| Recommendations were successfully provided
 
-### Use Case 5: Search dish by name
+### Use Case 5: Search dish by name {data-toc-label="Search By Name"}
 
 | Element            | Detail  |
 |--------------------|---------|
@@ -60,7 +64,7 @@
 |  **Basic Flow**    | <ul><li>User enters the name of the dish</li><li>User clicks on the `Search` button</li></ul>
 | **Post-Conditions**| Date last cooked for the dish entered is provided
 
-### Use Case 6: Delete dish
+### Use Case 6: Delete dish {data-toc-label="Delete Dish Logs"}
 
 | Element            | Detail  |
 |--------------------|---------|

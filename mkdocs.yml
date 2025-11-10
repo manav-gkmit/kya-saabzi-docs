@@ -5,6 +5,8 @@ theme:
   name: material
   icon: 
     logo: material/food-apple
+    repo: simple/github
+  favicon: assets/ingredient.ico
   features:
     - navigation.instant
     - navigation.tabs
@@ -16,18 +18,20 @@ theme:
         name: Switch to light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: light-green
-      accent: light-green
+      primary: teal
+      accent: teal
       toggle:
         icon: material/lightbulb-on
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: black
-      accent: indigo
+      accent: teal
       toggle:
         icon: material/lightbulb-off
         name: Switch to system preference
+repo_name: Kya Saabzi
+repo_url: https://github.com/manav-gkmit/kya-saabzi-docs
   
 markdown_extensions:
   - pymdownx.superfences:
@@ -35,6 +39,8 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+  - attr_list
+
 
 nav:
   - Home: index.md
@@ -43,3 +49,6 @@ nav:
   - Architecture:
     - Data Modeling: architecture/data-model.md
     - Database Indices: architecture/indexing.md
+    - Security: architecture/auth.md
+  - Setup:
+    - Environment: setup/environment.md

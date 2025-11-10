@@ -1,7 +1,10 @@
-
 # Database Indices
 
-## Single index on `users(username)`
+Defines the structure and relationships of the database entities that power Kya Saabzi’s core features.
+
+---
+
+## Single index on `users(username)` {data-toc-label="On username"}
 
 ```sql
 CREATE UNIQUE INDEX idx_username 
@@ -16,7 +19,7 @@ FROM users
 WHERE username = 'manav1';
 ```
 
-## Single index on `dishes(name)`
+## Single index on `dishes(name)` {data-toc-label="On dish name"}
 
 ```sql
 CREATE INDEX idx_dishname
@@ -31,7 +34,7 @@ FROM dishes
 WHERE name = 'Palak Paneer';
 ```
 
-## Composite index on `cooklogs(user_id, dish_id, date_cooked)`
+## Composite index on `cooklogs(user_id, dish_id, date_cooked)` {data-toc-label="On user id, dish id, date cooked"}
 
 ```sql
 CREATE INDEX idx_cooklogs_user_dish_date
