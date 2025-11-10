@@ -17,7 +17,7 @@ cd kya-saabzi-docs
 
 ### Initialize a virtual environment and install the dependencies
 ```console
-python3 -m venv .venv  
+python3 -m venv venv  
 
 pip3 install -r requirements.txt
 
