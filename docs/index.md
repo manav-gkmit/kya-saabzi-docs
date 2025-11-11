@@ -48,8 +48,6 @@ With these features, Kya Saabzi brings structure and simplicity to meal planning
 | **CI/CD Pipeline** | **GitHub Actions** | Automates the build, test, and deployment process for both backend and frontend. |
 | **Documentation Hosting** | **GitHub Pages** | Hosts MkDocs-generated static documentation for public or internal access. |
 
----
-
 ## Future Enhancements
 
 - Family based recommendations
@@ -58,3 +56,10 @@ With these features, Kya Saabzi brings structure and simplicity to meal planning
 - Push notifications or reminders and new dish ideas
 
 ---
+
+## Quick References
+
+- [Use Cases](use-cases/functional.md)
+- [Architecture](architecture/aws.md)
+- [Security](architecture/auth.md)
+- [Environment & Setup](setup/environment.md)

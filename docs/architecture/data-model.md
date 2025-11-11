@@ -47,7 +47,7 @@ erDiagram
 |--------|------|---------|
 | `id` | `UUID PRIMARY KEY` | Unique identifier for each user |
 | `username` | `TEXT UNIQUE NOT NULL` | The user’s chosen display name; must be unique |
-| `email` | `TEXT UNIQUE` | Optional field for future account recovery or contact |
+| `email` | `TEXT UNIQUE` | User email for future account recovery or contact |
 | `password_hash` | `TEXT NOT NULL` | Stores the password hash for authentication |
 | `created_at` | `TIMESTAMP` | Records when the user registered |
 | `updated_at` | `TIMESTAMP` | Records when the user last changed their information |
@@ -69,7 +69,7 @@ erDiagram
 | Column | Type | Purpose |
 |:--------|:------|:---------|
 | `id` | `UUID PRIMARY KEY` | Unique identifier for each dish log |
-| `user_id` | `INT REFERENCES users(id)` | Links each log to the user who created it |
+| `user_id` | `UUID REFERENCES users(id)` | Links each log to the user who created it |
 | `dish_id` | `INT REFERENCES dishes(id)` | Links to the dish that user cooked |
 | `created_at` | `TIMESTAMP` | Records when the log was registered |
 | `updated_at` | `TIMESTAMP` | Records when the user last changed their logs |
