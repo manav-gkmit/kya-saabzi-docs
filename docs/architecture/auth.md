@@ -33,8 +33,10 @@ flowchart TD
     G --> U(["End"])
 
     E@{ shape: lean-r}
+    P@{ shape: lean-r}
     K@{ shape: lean-r}
     L@{ shape: diam}
+    S@{ shape: lean-r}
 ```
 
 ## Authorization Flow

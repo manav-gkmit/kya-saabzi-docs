@@ -40,6 +40,7 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
   - attr_list
+  - pymdownx.blocks.caption
 
 
 nav:
@@ -47,9 +48,10 @@ nav:
   - Use Cases:
     - Functional: use-cases/functional.md
   - Architecture:
+    - AWS Specific: architecture/aws.md
     - Data Modeling: architecture/data-model.md
-    - Database Indices: architecture/indexing.md
     - Data Flow: architecture/data-flow.md
+    - Database Indices: architecture/indexing.md
     - Security: architecture/auth.md
   - Setup:
     - Environment: setup/environment.md

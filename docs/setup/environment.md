@@ -10,7 +10,7 @@ fastapi==0.110.2
 uvicorn[standard]==0.29.0
 SQLAlchemy==2.0.30
 alembic==1.13.1
-psycopg[binary]==3.1.19
+psycopg[binary]>=3.2.2
 pydantic==2.8.2
 pydantic-settings==2.2.1
 passlib[bcrypt]==1.7.4

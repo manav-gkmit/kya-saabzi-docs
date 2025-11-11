@@ -41,14 +41,11 @@ With these features, Kya Saabzi brings structure and simplicity to meal planning
 
 | **Component** | **AWS Service** | **Purpose / Description** |
 |----------------|------------------|-----------------------------|
-| **Frontend (React + Vite PWA)** | **Amazon S3 + CloudFront** | Hosts the static frontend files (HTML, JS, CSS, icons). CloudFront provides global CDN delivery and HTTPS. |
+| **Frontend (React + Vite PWA)** | **Amazon S3** | Hosts the static frontend files (HTML, JS, CSS, icons). |
 | **Backend (FastAPI API)** | **EC2** | Runs the containerized FastAPI backend. EC2 is suitable for smaller self-managed deployments. |
 | **Database (PostgreSQL)** | **Amazon RDS (PostgreSQL)** | Managed relational database for user data, cook logs, and dishes. Automated backups and scaling supported. |
-| **Environment Configuration** | **AWS Systems Manager Parameter Store** | Centralized storage for environment variables (e.g., `DATABASE_URL`, `API_BASE_URL`). |
-| **Networking** | **VPC + Application Load Balancer (ALB)** | Securely connects EC2 tasks and RDS within a private network. ALB distributes API traffic to running containers. |
+| **Networking** | **VPC** | Securely connects EC2 tasks and RDS within a private network. |
 | **CI/CD Pipeline** | **GitHub Actions** | Automates the build, test, and deployment process for both backend and frontend. |
-| **Container Registry** | **Amazon ECR (Elastic Container Registry)** | Stores and versions the Docker images for the backend. |
-| **DNS & Domains** | **Amazon Route 53** | Manages custom domains and integrates with CloudFront and ALB. |
 | **Documentation Hosting** | **GitHub Pages** | Hosts MkDocs-generated static documentation for public or internal access. |
 
 ---

@@ -7,7 +7,7 @@ Defines the structure and relationships of the database entities that power Kya 
 ```mermaid
 erDiagram
     USERS {
-        SERIAL id PK
+        UUID id PK
         TEXT username
         TEXT email
         TEXT password_hash
@@ -26,7 +26,7 @@ erDiagram
     }
 
     COOKLOGS {
-        SERIAL id PK
+        UUID id PK
         INT user_id FK
         INT dish_id FK
         TIMESTAMP created_at
@@ -45,7 +45,7 @@ erDiagram
 
 | Column | Type | Purpose |
 |--------|------|---------|
-| `id` | `SERIAL PRIMARY KEY` | Unique identifier for each user |
+| `id` | `UUID PRIMARY KEY` | Unique identifier for each user |
 | `username` | `TEXT UNIQUE NOT NULL` | The user’s chosen display name; must be unique |
 | `email` | `TEXT UNIQUE` | Optional field for future account recovery or contact |
 | `password_hash` | `TEXT NOT NULL` | Stores the password hash for authentication |
@@ -68,7 +68,7 @@ erDiagram
 
 | Column | Type | Purpose |
 |:--------|:------|:---------|
-| `id` | `SERIAL PRIMARY KEY` | Unique identifier for each dish log |
+| `id` | `UUID PRIMARY KEY` | Unique identifier for each dish log |
 | `user_id` | `INT REFERENCES users(id)` | Links each log to the user who created it |
 | `dish_id` | `INT REFERENCES dishes(id)` | Links to the dish that user cooked |
 | `created_at` | `TIMESTAMP` | Records when the log was registered |
