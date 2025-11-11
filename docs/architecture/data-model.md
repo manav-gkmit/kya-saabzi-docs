@@ -11,27 +11,27 @@ erDiagram
         TEXT username
         TEXT email
         TEXT password_hash
-        DATETIME created_at
-        DATETIME updated_at
-        DATETIME deleted_at
+        TIMESTAMP created_at
+        TIMESTAMP updated_at
+        TIMESTAMP deleted_at
     }
 
     DISHES {
         SERIAL id PK
         TEXT name
         TEXT slug
-        DATETIME created_at
-        DATETIME updated_at
-        DATETIME deleted_at
+        TIMESTAMP created_at
+        TIMESTAMP updated_at
+        TIMESTAMP deleted_at
     }
 
     COOKLOGS {
         SERIAL id PK
         INT user_id FK
         INT dish_id FK
-        DATETIME created_at
-        DATETIME updated_at
-        DATETIME deleted_at
+        TIMESTAMP created_at
+        TIMESTAMP updated_at
+        TIMESTAMP deleted_at
     }
 
     USERS ||--o{ COOKLOGS : creates
@@ -49,9 +49,9 @@ erDiagram
 | `username` | `TEXT UNIQUE NOT NULL` | The user’s chosen display name; must be unique |
 | `email` | `TEXT UNIQUE` | Optional field for future account recovery or contact |
 | `password_hash` | `TEXT NOT NULL` | Stores the password hash for authentication |
-| `created_at` | `DATETIME` | Records when the user registered |
-| `updated_at` | `DATETIME` | Records when the user last changed their information |
-| `deleted_at` | `DATETIME` | Records when was the user data deleted |
+| `created_at` | `TIMESTAMP` | Records when the user registered |
+| `updated_at` | `TIMESTAMP` | Records when the user last changed their information |
+| `deleted_at` | `TIMESTAMP` | Records when was the user data deleted |
 
 ## Dishes
 
@@ -60,9 +60,9 @@ erDiagram
 | `id` | `SERIAL PRIMARY KEY` | Unique dish identifier |
 | `name` | `TEXT UNIQUE NOT NULL` | Name of the dish (e.g., “Palak Paneer”) |
 | `slug` | `TEXT UNIQUE` | Hyphen separated name of the dish (e.g., "palak-paneer"); useful for URL |
-| `created_at` | `DATETIME` | Records when the dish was registered |
-| `updated_at` | `DATETIME` | Records when the dish was last changed |
-| `deleted_at` | `DATETIME` | Records when the dish was deleted |
+| `created_at` | `TIMESTAMP` | Records when the dish was registered |
+| `updated_at` | `TIMESTAMP` | Records when the dish was last changed |
+| `deleted_at` | `TIMESTAMP` | Records when the dish was deleted |
 
 ## Cooklogs
 
@@ -71,8 +71,8 @@ erDiagram
 | `id` | `SERIAL PRIMARY KEY` | Unique identifier for each dish log |
 | `user_id` | `INT REFERENCES users(id)` | Links each log to the user who created it |
 | `dish_id` | `INT REFERENCES dishes(id)` | Links to the dish that user cooked |
-| `created_at` | `DATETIME` | Records when the log was registered |
-| `updated_at` | `DATETIME` | Records when the user last changed their logs |
-| `deleted_at` | `DATETIME` | Records when the user deleted their logs |
+| `created_at` | `TIMESTAMP` | Records when the log was registered |
+| `updated_at` | `TIMESTAMP` | Records when the user last changed their logs |
+| `deleted_at` | `TIMESTAMP` | Records when the user deleted their logs |
 
 ---

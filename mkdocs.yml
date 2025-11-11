@@ -49,6 +49,7 @@ nav:
   - Architecture:
     - Data Modeling: architecture/data-model.md
     - Database Indices: architecture/indexing.md
+    - Data Flow: architecture/data-flow.md
     - Security: architecture/auth.md
   - Setup:
     - Environment: setup/environment.md
