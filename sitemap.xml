@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://manav-gkmit.github.io/kya-saabzi-docs/</loc>
+         <lastmod>2025-11-12</lastmod>
+    </url>
+    <url>
+         <loc>https://manav-gkmit.github.io/kya-saabzi-docs/architecture/auth/</loc>
+         <lastmod>2025-11-12</lastmod>
+    </url>
+    <url>
+         <loc>https://manav-gkmit.github.io/kya-saabzi-docs/architecture/aws/</loc>
+         <lastmod>2025-11-12</lastmod>
+    </url>
+    <url>
+         <loc>https://manav-gkmit.github.io/kya-saabzi-docs/architecture/data-flow/</loc>
+         <lastmod>2025-11-12</lastmod>
+    </url>
+    <url>
+         <loc>https://manav-gkmit.github.io/kya-saabzi-docs/architecture/data-model/</loc>
+         <lastmod>2025-11-12</lastmod>
+    </url>
+    <url>
+         <loc>https://manav-gkmit.github.io/kya-saabzi-docs/architecture/indexing/</loc>
+         <lastmod>2025-11-12</lastmod>
+    </url>
+    <url>
+         <loc>https://manav-gkmit.github.io/kya-saabzi-docs/setup/environment/</loc>
+         <lastmod>2025-11-12</lastmod>
+    </url>
+    <url>
+         <loc>https://manav-gkmit.github.io/kya-saabzi-docs/use-cases/functional/</loc>
+         <lastmod>2025-11-12</lastmod>
+    </url>
+</urlset>
