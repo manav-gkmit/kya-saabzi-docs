@@ -1,5 +1,8 @@
 site_name: Kya Saabzi Docs
 site_description: "Functional and Use Case documentation for the Kya Saabzi App"
+site_url: https://manav-gkmit.github.io/kya-saabzi-docs/
+repo_name: Kya Saabzi
+repo_url: https://github.com/manav-gkmit/kya-saabzi-docs
 
 theme:
   name: material
@@ -30,8 +33,6 @@ theme:
       toggle:
         icon: material/lightbulb-off
         name: Switch to system preference
-repo_name: Kya Saabzi
-repo_url: https://github.com/manav-gkmit/kya-saabzi-docs
   
 markdown_extensions:
   - pymdownx.superfences:

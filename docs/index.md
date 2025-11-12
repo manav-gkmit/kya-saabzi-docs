@@ -7,9 +7,9 @@ Click here to get started on how to use this app and download this for yourself 
 
 ---
 
-| Project Name | Project Manager | Start Date   | Duration        |
-|--------------|-----------------|--------------|-----------------|
-| Kya Saabzi   |                 | 6th Nov, 2025| 2 Weeks         |
+| Project Name | Start Date   | Duration        |
+|--------------|--------------|-----------------|
+| Kya Saabzi   | 6th Nov, 2025| 2 Weeks         |
 
 ---
 
