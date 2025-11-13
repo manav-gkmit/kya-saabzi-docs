@@ -306,6 +306,25 @@
   
 
       
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../test-plan/plan/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Test Plan
+
+      </a>
+    </li>
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -508,6 +527,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    AWS Specific
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -519,6 +551,112 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-environment-demonstration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud Environment Demonstration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Components
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#frontend-react-pwa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frontend (React PWA)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backend (FastAPI)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-amazon-rds-postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database (Amazon RDS – PostgreSQL)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#email-amazon-ses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Email (Amazon SES)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-request-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Request Flow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-deploy-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Deploy Checklist
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-future-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Future Scaling
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -695,6 +833,28 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../test-plan/plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Test Plan
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -766,6 +926,111 @@
 </tr>
 </tbody>
 </table>
+<hr />
+<h2 id="cloud-environment-demonstration">Cloud Environment Demonstration</h2>
+<h2 id="1-components">1. Components</h2>
+<h3 id="frontend-react-pwa"><strong>Frontend (React PWA)</strong></h3>
+<ul>
+<li>
+<p>Built with Vite.</p>
+</li>
+<li>
+<p>Compiled into static assets (HTML, CSS, JS).</p>
+</li>
+<li>
+<p>Hosted on <strong>Amazon S3</strong>.</p>
+</li>
+<li>
+<p>Service Worker provides caching &amp; offline PWA features.</p>
+</li>
+</ul>
+<h3 id="backend-fastapi"><strong>Backend (FastAPI)</strong></h3>
+<ul>
+<li>
+<p>Runs on <strong>Amazon EC2</strong>.</p>
+</li>
+<li>
+<p>Provides REST API (JWT Auth).</p>
+</li>
+<li>
+<p>Handles all business logic: users, dishes, cooklogs, recommendations.</p>
+</li>
+</ul>
+<h3 id="database-amazon-rds-postgresql"><strong>Database (Amazon RDS – PostgreSQL)</strong></h3>
+<ul>
+<li>
+<p>Stores all persistent data.</p>
+</li>
+<li>
+<p>Runs in a public subnet.</p>
+</li>
+<li>
+<p>Automated backups and snapshots.</p>
+</li>
+</ul>
+<h3 id="email-amazon-ses"><strong>Email (Amazon SES)</strong></h3>
+<ul>
+<li>Used for sending verification emails, OTPs, or notifications.</li>
+</ul>
+<hr />
+<h2 id="2-request-flow">2. Request Flow</h2>
+<ol>
+<li>
+<p>User visits: 
+   <code>https://kysaabzi.example.com</code>  → S3 → loads the React app.</p>
+</li>
+<li>
+<p>React frontend calls API: 
+   <code>https://api.kysaabzi.example.com</code> → EC2 running FastAPI.</p>
+</li>
+<li>
+<p>FastAPI reads/writes data in <strong>RDS PostgreSQL</strong>.</p>
+</li>
+<li>
+<p>For authentication emails or OTP: 
+   FastAPI → SES → Email sent to user.</p>
+</li>
+<li>
+<p>Service Worker caches assets for fast loads &amp; offline mode.</p>
+</li>
+</ol>
+<hr />
+<h2 id="4-deploy-checklist">4. Deploy Checklist</h2>
+<ol>
+<li>
+<p>Run tests (<code>pytest</code>, <code>vitest</code>).</p>
+</li>
+<li>
+<p>Build frontend → upload to S3</p>
+</li>
+<li>
+<p>Build backend → push image to registry.</p>
+</li>
+<li>
+<p>Run Alembic migrations on RDS.</p>
+</li>
+<li>
+<p>Deploy backend to EC2.</p>
+</li>
+<li>
+<p>Run smoke tests (<code>/health</code>, login, create cooklog).</p>
+</li>
+</ol>
+<hr />
+<h2 id="5-future-scaling">5. Future Scaling</h2>
+<ul>
+<li>
+<p>Frontend auto-scales through CloudFront.</p>
+</li>
+<li>
+<p>Backend can scale using:</p>
+<ul>
+<li>EC2 Auto Scaling Group</li>
+<li>ECS/EKS (preferred for production)</li>
+</ul>
+</li>
+</ul>
+<hr />
 
 
 
