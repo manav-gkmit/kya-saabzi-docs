@@ -17,7 +17,7 @@ erDiagram
     }
 
     DISHES {
-        SERIAL id PK
+        UUID id PK
         TEXT name
         TEXT slug
         TIMESTAMP created_at
@@ -27,8 +27,8 @@ erDiagram
 
     COOKLOGS {
         UUID id PK
-        INT user_id FK
-        INT dish_id FK
+        UUID user_id FK
+        UUID dish_id FK
         TIMESTAMP created_at
         TIMESTAMP updated_at
         TIMESTAMP deleted_at
@@ -57,7 +57,7 @@ erDiagram
 
 | Column | Type | Purpose |
 |:--------|:------|:---------|
-| `id` | `SERIAL PRIMARY KEY` | Unique dish identifier |
+| `id` | `UUID PRIMARY KEY` | Unique dish identifier |
 | `name` | `TEXT UNIQUE NOT NULL` | Name of the dish (e.g., “Palak Paneer”) |
 | `slug` | `TEXT UNIQUE` | Hyphen separated name of the dish (e.g., "palak-paneer"); useful for URL |
 | `created_at` | `TIMESTAMP` | Records when the dish was registered |
@@ -70,7 +70,7 @@ erDiagram
 |:--------|:------|:---------|
 | `id` | `UUID PRIMARY KEY` | Unique identifier for each dish log |
 | `user_id` | `UUID REFERENCES users(id)` | Links each log to the user who created it |
-| `dish_id` | `INT REFERENCES dishes(id)` | Links to the dish that user cooked |
+| `dish_id` | `UUID REFERENCES dishes(id)` | Links to the dish that user cooked |
 | `created_at` | `TIMESTAMP` | Records when the log was registered |
 | `updated_at` | `TIMESTAMP` | Records when the user last changed their logs |
 | `deleted_at` | `TIMESTAMP` | Records when the user deleted their logs |

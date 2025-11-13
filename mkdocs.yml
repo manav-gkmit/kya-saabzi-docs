@@ -56,3 +56,4 @@ nav:
     - Security: architecture/auth.md
   - Setup:
     - Environment: setup/environment.md
+  - Test Plan: test-plan/plan.md

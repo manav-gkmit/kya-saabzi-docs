@@ -34,17 +34,17 @@ FROM dishes
 WHERE name = 'Palak Paneer';
 ```
 
-## Composite index on `cooklogs(user_id, dish_id, date_cooked)` {data-toc-label="On user id, dish id, date cooked"}
+## Composite index on `cooklogs(user_id, dish_id, created_at)` {data-toc-label="On user id, dish id, created_at"}
 
 ```sql
 CREATE INDEX idx_cooklogs_user_dish_date
-ON cooklogs(user_id, dish_id, date_cooked);
+ON cooklogs(user_id, dish_id, created_at);
 ```
 
 Example
 
 ```sql
-SELECT MAX(date_cooked)
+SELECT MAX(created_at)
 FROM cooklogs
 WHERE user_id = 3 AND dish_id = 1;
 ```
