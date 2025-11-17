@@ -19,7 +19,6 @@ erDiagram
     DISHES {
         UUID id PK
         TEXT name
-        TEXT slug
         TIMESTAMP created_at
         TIMESTAMP updated_at
         TIMESTAMP deleted_at
@@ -32,6 +31,7 @@ erDiagram
         TIMESTAMP created_at
         TIMESTAMP updated_at
         TIMESTAMP deleted_at
+        TEXT note
     }
 
     USERS ||--o{ COOKLOGS : creates
@@ -59,7 +59,6 @@ erDiagram
 |:--------|:------|:---------|
 | `id` | `UUID PRIMARY KEY` | Unique dish identifier |
 | `name` | `TEXT UNIQUE NOT NULL` | Name of the dish (e.g., “Palak Paneer”) |
-| `slug` | `TEXT UNIQUE` | Hyphen separated name of the dish (e.g., "palak-paneer"); useful for URL |
 | `created_at` | `TIMESTAMP` | Records when the dish was registered |
 | `updated_at` | `TIMESTAMP` | Records when the dish was last changed |
 | `deleted_at` | `TIMESTAMP` | Records when the dish was deleted |
@@ -74,5 +73,6 @@ erDiagram
 | `created_at` | `TIMESTAMP` | Records when the log was registered |
 | `updated_at` | `TIMESTAMP` | Records when the user last changed their logs |
 | `deleted_at` | `TIMESTAMP` | Records when the user deleted their logs |
+| `note` | `TEXT` | Description of dish cooked by user |
 
 ---

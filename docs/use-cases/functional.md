@@ -34,7 +34,7 @@ Outlines the main functional scenarios that describe how users interact with Kya
 |--------------------|---------|
 | **Name**           | Add the dish
 |  **ID**            | UC-03
-| **Description**    | User can post what they have cooked today
+| **Description**    | User can post what they have cooked today with an optional note
 | **Actors**         | User, Dish, System
 | **Pre-Conditions** | <ul><li>User has been identified</li><li>Interface to post a dish is present</li></ul>
 |  **Basic Flow**    | <ul><li> User enters the dish cooked today</li><li> User presses the `Submit` button </li><li> System stores the dish log in the database </li></ul>
@@ -48,21 +48,21 @@ Outlines the main functional scenarios that describe how users interact with Kya
 |  **ID**            | UC-04
 | **Description**    | User can get dish recommendation based on their history and other's preferences
 | **Actors**         | User, Dish, System
-| **Pre-Conditions** | <ul><li>User must have some past history in the database</li><li>Others must have cooked atleast one dish</li></ul>
-|  **Basic Flow**    | <ul><li>User selects how many recommendations they want</li><li> User clicks on the `Get recommendation` button </li></ul>
+| **Pre-Conditions** | <ul><li>Others must have cooked atleast one dish</li></ul>
+|  **Basic Flow**    | <ul><li>User gets upto three recommendations</li><li> User clicks on the `Get recommendation` button </li></ul>
 | **Post-Conditions**| Recommendations were successfully provided
 
-### Use Case 5: Search dish by name {data-toc-label="Search By Name"}
+### Use Case 5: Get dish logs {data-toc-label="Cooklogs"}
 
 | Element            | Detail  |
 |--------------------|---------|
-| **Name**           | Dish's date last cooked
+| **Name**           | Cooklogs
 |  **ID**            | UC-05
-| **Description**    | User can search when a dish was last cooked
+| **Description**    | User can see the past 7 dishes they cooked
 | **Actors**         | User, Dish, System
 | **Pre-Conditions** | <ul><li>Users must have cooked atleast one dish</li></ul>
-|  **Basic Flow**    | <ul><li>User enters the name of the dish</li><li>User clicks on the `Search` button</li></ul>
-| **Post-Conditions**| Date last cooked for the dish entered is provided
+|  **Basic Flow**    | <ul>User clicks on `View My Cooklogs` button</ul>
+| **Post-Conditions**| Logs of the dishes cooked are provided
 
 ### Use Case 6: Delete dish logs {data-toc-label="Delete Dish Logs"}
 
@@ -73,5 +73,5 @@ Outlines the main functional scenarios that describe how users interact with Kya
 | **Description**    | User can delete the logs for a dish
 | **Actors**         | User, Dish, System
 | **Pre-Conditions** | <ul><li>Users must have cooked atleast one dish</li></ul>
-|  **Basic Flow**    | <ul><li>User enters the name of the dish</li><li>User clicks on the `Delete` button</li></ul>
+|  **Basic Flow**    | <ul><li>User clicks on the `Delete` button</li></ul>
 | **Post-Conditions**| Logs for the dish are deleted

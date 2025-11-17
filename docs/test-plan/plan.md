@@ -110,6 +110,20 @@ E2E flows include:
 
 ---
 
+### 4.5 Test Folder Structure
+Tests will be organized mirroring the application's source code structure.
+
+- **Backend Tests:**
+  - `backend/app/tests/unit/`: For unit tests of individual functions, schemas, and models.
+  - `backend/app/tests/integration/`: For integration tests covering API endpoints and database interactions.
+  - `backend/app/tests/api_contract/`: For API contract tests.
+
+- **Frontend Tests:**
+  - `frontend/src/__tests__/unit/`: For component rendering, utility functions, and state management unit tests.
+  - `frontend/src/__tests__/e2e/`: For end-to-end tests using Playwright/Cypress.
+
+---
+
 ## 5. Test Items
 
 ### Backend Endpoints
@@ -118,13 +132,13 @@ E2E flows include:
 
 - `POST /auth/login`
 
-- `GET /dishes`
+- `GET /user/me/logs`
 
-- `GET /dishes/search`
+- `GET /user/{target_user_id}/logs`
 
-- `POST /cooklogs`
+- `POST /add_dish`
 
-- `DELETE /cooklogs/{dish_id}`
+- `DELETE /cooklogs/{dish_name}/{cooklog_id}/me`
 
 - `GET /recommendations`
 
@@ -160,7 +174,9 @@ E2E flows include:
 
 ### Frontend
 
-- Node.js environment (Vite dev server)
+- Node.js (v20.x) environment (Vite dev server)
+
+- React (v18.x)
 
 - Browser: Chromium / Firefox / WebKit (for E2E)
 
@@ -178,7 +194,7 @@ E2E flows include:
 
 - React Testing Library 
 
-- Playwright
+- Postman
 
 
 ---
@@ -209,38 +225,79 @@ E2E flows include:
 
 ### Authentication
 
-- Successful registration
-- Duplicate registration blocked
-- Login success / failure
-- JWT expiration and invalid token handling
+- **Successful registration:**
+  - **Acceptance Criteria:** A new user account is created, and a valid JWT is returned.
+  - **Negative Scenario:** Attempting to register with an existing email or invalid credentials should return an appropriate error (e.g., 409 Conflict, 400 Bad Request) and not create a user.
+
+- **Login success / failure:**
+  - **Acceptance Criteria:** Valid credentials return a JWT; invalid credentials return a 401 Unauthorized error.
+  - **Negative Scenario:** Login with incorrect password or non-existent user should fail with 401.
+
+- **JWT expiration and invalid token handling:**
+  - **Acceptance Criteria:** Expired or invalid tokens result in 401 Unauthorized responses for protected routes.
+  - **Negative Scenario:** Accessing protected routes with an expired/invalid token should be denied.
 
 ### Dishes
 
-- Create dish
-- Search dish
-- Handle dish not found
-- Duplicate dish prevention 
+- **Create dish:**
+  - **Acceptance Criteria:** A new dish is successfully added to the database.
+  - **Negative Scenario:** Attempting to create a dish with invalid data (e.g., missing name) should return a 400 Bad Request.
+
+- **Search dish:**
+  - **Acceptance Criteria:** Dishes matching the search query are returned.
+  - **Negative Scenario:** Searching for a non-existent dish should return an empty list or 404 Not Found.
+
+- **Duplicate dish prevention:**
+  - **Acceptance Criteria:** Attempting to create a dish with the exact same name (case-insensitive) should return a 409 Conflict.
 
 ### Cooklogs
 
-- Add new cooklog
-- Retrieve cooklog list
-- Soft delete and confirm hiding
-- Unauthorized cooklog deletion blocked
+- **Add new cooklog:**
+  - **Acceptance Criteria:** A new cooklog entry is created for the authenticated user.
+  - **Negative Scenario:** Adding a cooklog for a non-existent dish or without authentication should fail.
+
+- **Retrieve cooklog list:**
+  - **Acceptance Criteria:** The authenticated user's cooklogs are returned, ordered by recency.
+  - **Negative Scenario:** Unauthorized access to another user's cooklogs should be blocked (403 Forbidden).
+
+- **Soft delete and confirm hiding:**
+  - **Acceptance Criteria:** A cooklog is marked as deleted and no longer appears in retrieval queries for the user, but remains in the database.
+  - **Negative Scenario:** Attempting to delete a non-existent cooklog should return 404 Not Found.
+
+- **Unauthorized cooklog deletion blocked:**
+  - **Acceptance Criteria:** A user cannot delete another user's cooklog (403 Forbidden).
 
 ### Recommendations
 
-- Recommend dishes not cooked recently
-- Recommendations adjust based on community logs
-- No recommendations for empty history → fallback behavior
+- **Recommend dishes not cooked recently:**
+  - **Acceptance Criteria:** The system suggests dishes that the user has not cooked recently, based on defined heuristics.
+  - **Negative Scenario:** Recommendations should not include dishes cooked very recently.
+
+- **Recommendations adjust based on community logs:**
+  - **Acceptance Criteria:** Recommendations incorporate popularity from other users' cooklogs.
+
+- **No recommendations for empty history → fallback behavior:**
+  - **Acceptance Criteria:** If a user has no cooklogs, a default set of popular dishes is recommended.
 
 ### Frontend
 
-- User can log in / out
-- Forms validate input
-- Recommendations page loads correct data
-- PWA offline fallback works
-- UI handles API errors correctly
+- **User can log in / out:**
+  - **Acceptance Criteria:** Users can successfully navigate through login and logout flows, and their authentication status is correctly reflected in the UI.
+  - **Negative Scenario:** Invalid login credentials display an error message without logging in.
+
+- **Forms validate input:**
+  - **Acceptance Criteria:** All forms (e.g., registration, add dish) provide real-time validation feedback and prevent submission of invalid data.
+  - **Negative Scenario:** Submitting a form with invalid data should show validation errors and prevent API calls.
+
+- **Recommendations page loads correct data:**
+  - **Acceptance Criteria:** The recommendations page displays a list of dishes based on the backend's recommendation logic.
+
+- **PWA offline fallback works:**
+  - **Acceptance Criteria:** The application remains functional (e.g., displays cached content, shows offline message) when the network is unavailable.
+  
+- **UI handles API errors correctly:**
+  - **Acceptance Criteria:** The UI displays user-friendly error messages for various API failure scenarios (e.g., network error, 401, 500).
+  - **Negative Scenario:** API errors should not crash the application; appropriate error states should be displayed.
 
 ---
 
@@ -256,13 +313,31 @@ E2E flows include:
 ## 10. Acceptance Criteria
 
 - All critical user flows pass E2E tests.
-- 90%+ backend test coverage.
+- Backend unit test coverage: >90%
+- Frontend unit/component test coverage: >80%
 - No unauthorized data access possible.
 - PWA works offline for main pages.
 - Recommendation outputs validated against heuristic logic.
 
 ---
 
-## 11. Conclusion
+## 11. CI Integration Steps
+Continuous Integration (CI) will be used to automate testing and ensure code quality with every push to the repository.
+
+- **Automated Test Execution:**
+  - Unit, integration, and API contract tests (backend) will run on every push to `dev` and `main` branches.
+  - Unit and component tests (frontend) will run on every push to `dev` and `main` branches.
+  - E2E tests will run on a scheduled basis or before deployment to staging environments.
+
+- **Code Quality Checks:**
+  - Linting (ESLint for frontend, Flake8/Black for backend) will be enforced.
+  - Type checking (TypeScript for frontend, MyPy for backend) will be performed.
+
+- **Reporting:**
+  - Test results and coverage reports will be generated and made available in the CI/CD pipeline (e.g., via GitHub Actions artifacts).
+
+---
+
+## 12. Conclusion
 
 This test plan ensures Kya Saabzi meets functional and non-functional standards across the entire stack, providing confidence in quality and reliability before deployment.
