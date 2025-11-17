@@ -883,6 +883,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#45-test-folder-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5 Test Folder Structure
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1084,9 +1093,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-conclusion" class="md-nav__link">
+  <a href="#11-ci-integration-steps" class="md-nav__link">
     <span class="md-ellipsis">
-      11. Conclusion
+      11. CI Integration Steps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Conclusion
     </span>
   </a>
   
@@ -1245,6 +1263,22 @@ Types of testing:  </p>
 </li>
 </ul>
 <hr />
+<h3 id="45-test-folder-structure">4.5 Test Folder Structure</h3>
+<p>Tests will be organized mirroring the application's source code structure.</p>
+<ul>
+<li><strong>Backend Tests:</strong></li>
+<li><code>backend/app/tests/unit/</code>: For unit tests of individual functions, schemas, and models.</li>
+<li><code>backend/app/tests/integration/</code>: For integration tests covering API endpoints and database interactions.</li>
+<li>
+<p><code>backend/app/tests/api_contract/</code>: For API contract tests.</p>
+</li>
+<li>
+<p><strong>Frontend Tests:</strong></p>
+</li>
+<li><code>frontend/src/__tests__/unit/</code>: For component rendering, utility functions, and state management unit tests.</li>
+<li><code>frontend/src/__tests__/e2e/</code>: For end-to-end tests using Playwright/Cypress.</li>
+</ul>
+<hr />
 <h2 id="5-test-items">5. Test Items</h2>
 <h3 id="backend-endpoints">Backend Endpoints</h3>
 <ul>
@@ -1255,16 +1289,16 @@ Types of testing:  </p>
 <p><code>POST /auth/login</code></p>
 </li>
 <li>
-<p><code>GET /dishes</code></p>
+<p><code>GET /user/me/logs</code></p>
 </li>
 <li>
-<p><code>GET /dishes/search</code></p>
+<p><code>GET /user/{target_user_id}/logs</code></p>
 </li>
 <li>
-<p><code>POST /cooklogs</code></p>
+<p><code>POST /add_dish</code></p>
 </li>
 <li>
-<p><code>DELETE /cooklogs/{dish_id}</code></p>
+<p><code>DELETE /cooklogs/{dish_name}/{cooklog_id}/me</code></p>
 </li>
 <li>
 <p><code>GET /recommendations</code></p>
@@ -1314,7 +1348,10 @@ Types of testing:  </p>
 <h3 id="frontend">Frontend</h3>
 <ul>
 <li>
-<p>Node.js environment (Vite dev server)</p>
+<p>Node.js (v20.x) environment (Vite dev server)</p>
+</li>
+<li>
+<p>React (v18.x)</p>
 </li>
 <li>
 <p>Browser: Chromium / Firefox / WebKit (for E2E)</p>
@@ -1341,7 +1378,7 @@ Types of testing:  </p>
 <p>React Testing Library </p>
 </li>
 <li>
-<p>Playwright</p>
+<p>Postman</p>
 </li>
 </ul>
 <hr />
@@ -1375,38 +1412,118 @@ Types of testing:  </p>
 <h2 id="8-test-cases-overview">8. Test Cases Overview</h2>
 <h3 id="authentication">Authentication</h3>
 <ul>
-<li>Successful registration</li>
-<li>Duplicate registration blocked</li>
-<li>Login success / failure</li>
-<li>JWT expiration and invalid token handling</li>
+<li><strong>Successful registration:</strong></li>
+<li><strong>Acceptance Criteria:</strong> A new user account is created, and a valid JWT is returned.</li>
+<li>
+<p><strong>Negative Scenario:</strong> Attempting to register with an existing email or invalid credentials should return an appropriate error (e.g., 409 Conflict, 400 Bad Request) and not create a user.</p>
+</li>
+<li>
+<p><strong>Login success / failure:</strong></p>
+</li>
+<li><strong>Acceptance Criteria:</strong> Valid credentials return a JWT; invalid credentials return a 401 Unauthorized error.</li>
+<li>
+<p><strong>Negative Scenario:</strong> Login with incorrect password or non-existent user should fail with 401.</p>
+</li>
+<li>
+<p><strong>JWT expiration and invalid token handling:</strong></p>
+</li>
+<li><strong>Acceptance Criteria:</strong> Expired or invalid tokens result in 401 Unauthorized responses for protected routes.</li>
+<li><strong>Negative Scenario:</strong> Accessing protected routes with an expired/invalid token should be denied.</li>
 </ul>
 <h3 id="dishes">Dishes</h3>
 <ul>
-<li>Create dish</li>
-<li>Search dish</li>
-<li>Handle dish not found</li>
-<li>Duplicate dish prevention </li>
+<li><strong>Create dish:</strong></li>
+<li><strong>Acceptance Criteria:</strong> A new dish is successfully added to the database.</li>
+<li>
+<p><strong>Negative Scenario:</strong> Attempting to create a dish with invalid data (e.g., missing name) should return a 400 Bad Request.</p>
+</li>
+<li>
+<p><strong>Search dish:</strong></p>
+</li>
+<li><strong>Acceptance Criteria:</strong> Dishes matching the search query are returned.</li>
+<li>
+<p><strong>Negative Scenario:</strong> Searching for a non-existent dish should return an empty list or 404 Not Found.</p>
+</li>
+<li>
+<p><strong>Duplicate dish prevention:</strong></p>
+</li>
+<li><strong>Acceptance Criteria:</strong> Attempting to create a dish with the exact same name (case-insensitive) should return a 409 Conflict.</li>
 </ul>
 <h3 id="cooklogs_1">Cooklogs</h3>
 <ul>
-<li>Add new cooklog</li>
-<li>Retrieve cooklog list</li>
-<li>Soft delete and confirm hiding</li>
-<li>Unauthorized cooklog deletion blocked</li>
+<li><strong>Add new cooklog:</strong></li>
+<li><strong>Acceptance Criteria:</strong> A new cooklog entry is created for the authenticated user.</li>
+<li>
+<p><strong>Negative Scenario:</strong> Adding a cooklog for a non-existent dish or without authentication should fail.</p>
+</li>
+<li>
+<p><strong>Retrieve cooklog list:</strong></p>
+</li>
+<li><strong>Acceptance Criteria:</strong> The authenticated user's cooklogs are returned, ordered by recency.</li>
+<li>
+<p><strong>Negative Scenario:</strong> Unauthorized access to another user's cooklogs should be blocked (403 Forbidden).</p>
+</li>
+<li>
+<p><strong>Soft delete and confirm hiding:</strong></p>
+</li>
+<li><strong>Acceptance Criteria:</strong> A cooklog is marked as deleted and no longer appears in retrieval queries for the user, but remains in the database.</li>
+<li>
+<p><strong>Negative Scenario:</strong> Attempting to delete a non-existent cooklog should return 404 Not Found.</p>
+</li>
+<li>
+<p><strong>Unauthorized cooklog deletion blocked:</strong></p>
+</li>
+<li><strong>Acceptance Criteria:</strong> A user cannot delete another user's cooklog (403 Forbidden).</li>
 </ul>
 <h3 id="recommendations">Recommendations</h3>
 <ul>
-<li>Recommend dishes not cooked recently</li>
-<li>Recommendations adjust based on community logs</li>
-<li>No recommendations for empty history → fallback behavior</li>
+<li><strong>Recommend dishes not cooked recently:</strong></li>
+<li><strong>Acceptance Criteria:</strong> The system suggests dishes that the user has not cooked recently, based on defined heuristics.</li>
+<li>
+<p><strong>Negative Scenario:</strong> Recommendations should not include dishes cooked very recently.</p>
+</li>
+<li>
+<p><strong>Recommendations adjust based on community logs:</strong></p>
+</li>
+<li>
+<p><strong>Acceptance Criteria:</strong> Recommendations incorporate popularity from other users' cooklogs.</p>
+</li>
+<li>
+<p><strong>No recommendations for empty history → fallback behavior:</strong></p>
+</li>
+<li><strong>Acceptance Criteria:</strong> If a user has no cooklogs, a default set of popular dishes is recommended.</li>
 </ul>
 <h3 id="frontend_1">Frontend</h3>
 <ul>
-<li>User can log in / out</li>
-<li>Forms validate input</li>
-<li>Recommendations page loads correct data</li>
-<li>PWA offline fallback works</li>
-<li>UI handles API errors correctly</li>
+<li><strong>User can log in / out:</strong></li>
+<li><strong>Acceptance Criteria:</strong> Users can successfully navigate through login and logout flows, and their authentication status is correctly reflected in the UI.</li>
+<li>
+<p><strong>Negative Scenario:</strong> Invalid login credentials display an error message without logging in.</p>
+</li>
+<li>
+<p><strong>Forms validate input:</strong></p>
+</li>
+<li><strong>Acceptance Criteria:</strong> All forms (e.g., registration, add dish) provide real-time validation feedback and prevent submission of invalid data.</li>
+<li>
+<p><strong>Negative Scenario:</strong> Submitting a form with invalid data should show validation errors and prevent API calls.</p>
+</li>
+<li>
+<p><strong>Recommendations page loads correct data:</strong></p>
+</li>
+<li>
+<p><strong>Acceptance Criteria:</strong> The recommendations page displays a list of dishes based on the backend's recommendation logic.</p>
+</li>
+<li>
+<p><strong>PWA offline fallback works:</strong></p>
+</li>
+<li>
+<p><strong>Acceptance Criteria:</strong> The application remains functional (e.g., displays cached content, shows offline message) when the network is unavailable.</p>
+</li>
+<li>
+<p><strong>UI handles API errors correctly:</strong></p>
+</li>
+<li><strong>Acceptance Criteria:</strong> The UI displays user-friendly error messages for various API failure scenarios (e.g., network error, 401, 500).</li>
+<li><strong>Negative Scenario:</strong> API errors should not crash the application; appropriate error states should be displayed.</li>
 </ul>
 <hr />
 <h2 id="9-risks-mitigations">9. Risks &amp; Mitigations</h2>
@@ -1440,13 +1557,36 @@ Types of testing:  </p>
 <h2 id="10-acceptance-criteria">10. Acceptance Criteria</h2>
 <ul>
 <li>All critical user flows pass E2E tests.</li>
-<li>90%+ backend test coverage.</li>
+<li>Backend unit test coverage: &gt;90%</li>
+<li>Frontend unit/component test coverage: &gt;80%</li>
 <li>No unauthorized data access possible.</li>
 <li>PWA works offline for main pages.</li>
 <li>Recommendation outputs validated against heuristic logic.</li>
 </ul>
 <hr />
-<h2 id="11-conclusion">11. Conclusion</h2>
+<h2 id="11-ci-integration-steps">11. CI Integration Steps</h2>
+<p>Continuous Integration (CI) will be used to automate testing and ensure code quality with every push to the repository.</p>
+<ul>
+<li><strong>Automated Test Execution:</strong></li>
+<li>Unit, integration, and API contract tests (backend) will run on every push to <code>dev</code> and <code>main</code> branches.</li>
+<li>Unit and component tests (frontend) will run on every push to <code>dev</code> and <code>main</code> branches.</li>
+<li>
+<p>E2E tests will run on a scheduled basis or before deployment to staging environments.</p>
+</li>
+<li>
+<p><strong>Code Quality Checks:</strong></p>
+</li>
+<li>Linting (ESLint for frontend, Flake8/Black for backend) will be enforced.</li>
+<li>
+<p>Type checking (TypeScript for frontend, MyPy for backend) will be performed.</p>
+</li>
+<li>
+<p><strong>Reporting:</strong></p>
+</li>
+<li>Test results and coverage reports will be generated and made available in the CI/CD pipeline (e.g., via GitHub Actions artifacts).</li>
+</ul>
+<hr />
+<h2 id="12-conclusion">12. Conclusion</h2>
 <p>This test plan ensures Kya Saabzi meets functional and non-functional standards across the entire stack, providing confidence in quality and reliability before deployment.</p>
 
 
