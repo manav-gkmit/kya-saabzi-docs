@@ -14,12 +14,11 @@ AWS specific architecture
 | AWS Component / Tool | Purpose in this architecture |
 |----------------------|------------------------------|
 | **Client / Internet** | End user using the PWA in a browser or mobile; accesses frontend over the public internet. |
-| **Amazon S3 (Frontend)** | Hosts the built static PWA assets. Provides durable, low-cost static hosting for the app bundle. |
+| **Amazon S3 + Cloudfront (Frontend)** | Hosts the built static PWA assets. Provides durable, low-cost static hosting for the app bundle. |
 | **Virtual Private Cloud (VPC)** | Network boundary that contains the compute and database resources (subnet layout shown in diagram). |
 | **Public Subnet** | The public subnet inside the VPC where internet-facing resources (as drawn) can be placed and receive traffic. |
 | **Amazon EC2 (Backend)** | Runs the FastAPI backend application. Handles API requests, business logic, and talks to the database and SES. |
 | **Amazon RDS (Database)** | Managed PostgreSQL instance that stores `users`, `dishes`, and `cooklogs`. Provides durable, backed-up relational storage for the app. |
-| **Amazon SES (Authentication / Email)** | Used by the backend to send authentication emails, OTPs, and other transactional messages (as shown). |
 | **GitHub Actions (CI/CD)** | Continuous integration / deployment pipeline that builds and deploys the backend and frontend to the AWS environment. |
 
 ---
@@ -54,10 +53,6 @@ AWS specific architecture
 
 - Automated backups and snapshots.
 
-### **Email (Amazon SES)**
-
-- Used for sending verification emails, OTPs, or notifications.
-
 ---
 ## 2. Request Flow
 
@@ -69,16 +64,13 @@ AWS specific architecture
 
 3. FastAPI reads/writes data in **RDS PostgreSQL**.
 
-4. For authentication emails or OTP: 
-   FastAPI → SES → Email sent to user.
-
-5. Service Worker caches assets for fast loads & offline mode.
+4. Service Worker caches assets for fast loads & offline mode.
 
 ---
 
 ## 4. Deploy Checklist
 
-1. Run tests (`pytest`, `vitest`).
+1. Run tests (`pytest`).
 
 2. Build frontend → upload to S3
 
@@ -94,7 +86,7 @@ AWS specific architecture
 
 ## 5. Future Scaling
 
-- Frontend auto-scales through CloudFront.
+- SES for email related services.
 
 - Backend can scale using:
     - EC2 Auto Scaling Group

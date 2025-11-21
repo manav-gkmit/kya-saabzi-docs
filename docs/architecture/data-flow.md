@@ -9,10 +9,10 @@ This section displays how the data flows in between the **Kya Saabzi System** an
 
 ```mermaid
 flowchart LR
-    User["User"] -- Uses: register / login / add log / get recommendations / search / delete --> System["Kya Saabzi System"]
-    System -- read/write user data --> UsersDB["PostgreSQL"]
-    System -- read/write dish catalog --> UsersDB
-    System -- create/read/delete cooklog entries --> UsersDB
+    User["User"] <-- Uses: register / login / add log / get recommendations / search / delete --> System["Kya Saabzi System"]
+    System <-- read/write user data --> UsersDB["PostgreSQL"]
+    System <-- read/write dish catalog --> UsersDB
+    System <-- create/read/delete cooklog entries --> UsersDB
 
     UsersDB@{ shape: db}
 ```
@@ -25,12 +25,10 @@ flowchart TB
     n2 -- Success --> n3["Kya Saabzi System"]
     n2 -- Failure --> n1
     n2 -- Verify credentials --> n4["Users Table"]
-    n3 -- Add dish --> n5["Dishes table"]
+    n3 -- Add dish and note --> n5["Dishes table"]
     n3 -- View logs --> n6["Cooklogs table"]
-    n3 -- Update user info --> n4
-    n3 -- Delete dish --> n5
+    n3 -- Give recommendations --> n1
     n3 -- Delete logs --> n6
-    n3 -- Search dish by name --> n5
     n1@{ shape: rect}
     n2@{ shape: event}
     n4@{ shape: internal-storage}

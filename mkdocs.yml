@@ -41,6 +41,9 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
   - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.blocks.caption
 
 
@@ -55,5 +58,6 @@ nav:
     - Database Indices: architecture/indexing.md
     - Security: architecture/auth.md
   - Setup:
-    - Environment: setup/environment.md
+    - Frontend setup: setup/frontend.md
+    - Backend setup: setup/backend.md
   - Test Plan: test-plan/plan.md

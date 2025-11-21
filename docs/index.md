@@ -3,7 +3,7 @@
 **Kya Saabzi** is a simple dish recommendation app that aims to solve your everyday problem of  
 > *"Aaj kya banau?"*  
 
-Click here to get started on how to use this app and download this for yourself from this link.
+[Click here](https://github.com/manav-gkmit/kya-saabzi-backend) to get started on how to use this app and download this for yourself.
 
 ---
 
@@ -17,11 +17,11 @@ Click here to get started on how to use this app and download this for yourself 
 
 ### Problem Statement
 
-One of the major confusion in everyday life of many households is *What should I cook today?* and this dilemma often leads to dishes being repeated too soon. Certain disliked dishes cooked repeatedly are often wasted or people lean towards ordering food *(junk usually)* which is also a major source for health related issues.
+One of the major confusion in everyday life of many households is *What should I cook today?* and this dilemma often leads to dishes being repeated too soon. Certain disliked dishes cooked repeatedly are often wasted and/or people lean towards ordering food *(junk usually)* which is also a major source for health related issues.
 
 ### Solution
 
-Kya Saabzi addresses this everyday problem through personalized, data-driven dish recommendations.
+Kya Saabzi addresses this everyday problem through data-driven dish recommendations.
 
 The app will:
 
@@ -41,7 +41,7 @@ With these features, Kya Saabzi brings structure and simplicity to meal planning
 
 | **Component** | **AWS Service** | **Purpose / Description** |
 |----------------|------------------|-----------------------------|
-| **Frontend (React + Vite PWA)** | **Amazon S3** | Hosts the static frontend files (HTML, JS, CSS, icons). |
+| **Frontend (React + Vite PWA)** | **Amazon S3 + Cloudfront** | Hosts the static frontend files (HTML, JS, CSS, icons). |
 | **Backend (FastAPI API)** | **EC2** | Runs the containerized FastAPI backend. EC2 is suitable for smaller self-managed deployments. |
 | **Database (PostgreSQL)** | **Amazon RDS (PostgreSQL)** | Managed relational database for user data, cook logs, and dishes. Automated backups and scaling supported. |
 | **Networking** | **VPC** | Securely connects EC2 tasks and RDS within a private network. |
@@ -62,4 +62,4 @@ With these features, Kya Saabzi brings structure and simplicity to meal planning
 - [Use Cases](use-cases/functional.md)
 - [Architecture](architecture/aws.md)
 - [Security](architecture/auth.md)
-- [Environment & Setup](setup/environment.md)
+- [Environment & Setup](setup/backend.md)
