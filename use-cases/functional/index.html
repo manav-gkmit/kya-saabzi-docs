@@ -294,7 +294,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../setup/environment/" class="md-tabs__link">
+        <a href="../../setup/frontend/" class="md-tabs__link">
           
   
   
@@ -777,12 +777,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../setup/environment/" class="md-nav__link">
+      <a href="../../setup/frontend/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Environment
+    Frontend setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/backend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backend setup
     
   </span>
   
@@ -871,11 +894,11 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Pre-Conditions</strong></td>
-<td style="text-align: left;"><ul><li>Sign Up Page with <code>Username</code> &amp; <code>Password</code> fields</li></ul></td>
+<td style="text-align: left;"><ul><li>Sign Up Page with <code>Username</code>, <code>Email</code> &amp; <code>Password</code> fields</li></ul></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Basic Flow</strong></td>
-<td style="text-align: left;"><ul><li> User selects <code>Username</code> field and enters preferred username</li><li> User selects <code>Password</code> field and enters password </li><li> User clicks on the <code>Register</code> button </li><li> System stores the <code>username</code> &amp; <code>password</code> in the database </li></ul></td>
+<td style="text-align: left;"><ul><li> User selects <code>Username</code> field and enters preferred username</li><li> User selects <code>Email</code> field and enters email </li><li> User selects the <code>Password</code> field and enters password</li><li> User clicks on the <code>Register</code> button </li><li> System stores the <code>username</code> &amp; <code>password</code> in the database </li></ul></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Post-Conditions</strong></td>
@@ -910,15 +933,15 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Pre-Conditions</strong></td>
-<td style="text-align: left;"><ul><li>Login Page with <code>Username</code> &amp; <code>Password</code> fields</ul></li></td>
+<td style="text-align: left;"><ul><li>Login Page with <code>Email</code> &amp; <code>Password</code> fields</ul></li></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Basic Flow</strong></td>
-<td style="text-align: left;"><ul><li> User selects <code>Username</code> field and enters registered username</li><li> User selects <code>Password</code> field and enters their password </li><li> User clicks on the <code>Login</code> button </li><li> System authenticates the user and logs them in </li></ul></td>
+<td style="text-align: left;"><ul><li> User selects <code>Email</code> field and enters registered username</li><li> User selects <code>Password</code> field and enters their password </li><li> User clicks on the <code>Login</code> button </li><li> System authenticates the user and logs them in </li></ul></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Post-Conditions</strong></td>
-<td style="text-align: left;">User has logged in successfully</td>
+<td style="text-align: left;">User has been successfully logged in.</td>
 </tr>
 </tbody>
 </table>
@@ -945,7 +968,7 @@
 </tr>
 <tr>
 <td><strong>Actors</strong></td>
-<td>User, Dish, System</td>
+<td>User, System</td>
 </tr>
 <tr>
 <td><strong>Pre-Conditions</strong></td>
@@ -953,7 +976,7 @@
 </tr>
 <tr>
 <td><strong>Basic Flow</strong></td>
-<td><ul><li> User enters the dish cooked today</li><li> User presses the <code>Submit</code> button </li><li> System stores the dish log in the database </li></ul></td>
+<td><ul><li> User enters the dish cooked today (with an optional note)</li><li> User presses the <code>Submit</code> button </li><li> System stores the dish and log in the database </li></ul></td>
 </tr>
 <tr>
 <td><strong>Post-Conditions</strong></td>
@@ -984,7 +1007,7 @@
 </tr>
 <tr>
 <td><strong>Actors</strong></td>
-<td>User, Dish, System</td>
+<td>User, System</td>
 </tr>
 <tr>
 <td><strong>Pre-Conditions</strong></td>
@@ -992,7 +1015,7 @@
 </tr>
 <tr>
 <td><strong>Basic Flow</strong></td>
-<td><ul><li>User gets upto three recommendations</li><li> User clicks on the <code>Get recommendation</code> button </li></ul></td>
+<td><ul><li>User gets upto three recommendations with notes by community</li><li> User clicks on the <code>Get recommendation</code> button </li></ul></td>
 </tr>
 <tr>
 <td><strong>Post-Conditions</strong></td>
@@ -1023,7 +1046,7 @@
 </tr>
 <tr>
 <td><strong>Actors</strong></td>
-<td>User, Dish, System</td>
+<td>User, System</td>
 </tr>
 <tr>
 <td><strong>Pre-Conditions</strong></td>
@@ -1062,7 +1085,7 @@
 </tr>
 <tr>
 <td><strong>Actors</strong></td>
-<td>User, Dish, System</td>
+<td>User, System</td>
 </tr>
 <tr>
 <td><strong>Pre-Conditions</strong></td>
@@ -1074,7 +1097,7 @@
 </tr>
 <tr>
 <td><strong>Post-Conditions</strong></td>
-<td>Logs for the dish are deleted</td>
+<td>Log for the dish is deleted</td>
 </tr>
 </tbody>
 </table>

@@ -294,7 +294,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../setup/environment/" class="md-tabs__link">
+        <a href="../../setup/frontend/" class="md-tabs__link">
           
   
   
@@ -741,12 +741,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../setup/environment/" class="md-nav__link">
+      <a href="../../setup/frontend/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Environment
+    Frontend setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/backend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backend setup
     
   </span>
   
@@ -810,10 +833,10 @@
 <hr />
 <h2 id="dfd-level-0">DFD Level 0</h2>
 <pre class="mermaid"><code>flowchart LR
-    User["User"] -- Uses: register / login / add log / get recommendations / search / delete --&gt; System["Kya Saabzi System"]
-    System -- read/write user data --&gt; UsersDB["PostgreSQL"]
-    System -- read/write dish catalog --&gt; UsersDB
-    System -- create/read/delete cooklog entries --&gt; UsersDB
+    User["User"] &lt;-- Uses: register / login / add log / get recommendations / search / delete --&gt; System["Kya Saabzi System"]
+    System &lt;-- read/write user data --&gt; UsersDB["PostgreSQL"]
+    System &lt;-- read/write dish catalog --&gt; UsersDB
+    System &lt;-- create/read/delete cooklog entries --&gt; UsersDB
 
     UsersDB@{ shape: db}</code></pre>
 <h2 id="dfd-level-1">DFD Level 1</h2>
@@ -822,12 +845,10 @@
     n2 -- Success --&gt; n3["Kya Saabzi System"]
     n2 -- Failure --&gt; n1
     n2 -- Verify credentials --&gt; n4["Users Table"]
-    n3 -- Add dish --&gt; n5["Dishes table"]
+    n3 -- Add dish and note --&gt; n5["Dishes table"]
     n3 -- View logs --&gt; n6["Cooklogs table"]
-    n3 -- Update user info --&gt; n4
-    n3 -- Delete dish --&gt; n5
+    n3 -- Give recommendations --&gt; n1
     n3 -- Delete logs --&gt; n6
-    n3 -- Search dish by name --&gt; n5
     n1@{ shape: rect}
     n2@{ shape: event}
     n4@{ shape: internal-storage}

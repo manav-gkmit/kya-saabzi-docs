@@ -294,7 +294,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../setup/environment/" class="md-tabs__link">
+        <a href="../../setup/frontend/" class="md-tabs__link">
           
   
   
@@ -613,15 +613,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#email-amazon-ses" class="md-nav__link">
-    <span class="md-ellipsis">
-      Email (Amazon SES)
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -810,12 +801,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../setup/environment/" class="md-nav__link">
+      <a href="../../setup/frontend/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Environment
+    Frontend setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/backend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backend setup
     
   </span>
   
@@ -897,7 +911,7 @@
 <td>End user using the PWA in a browser or mobile; accesses frontend over the public internet.</td>
 </tr>
 <tr>
-<td><strong>Amazon S3 (Frontend)</strong></td>
+<td><strong>Amazon S3 + Cloudfront (Frontend)</strong></td>
 <td>Hosts the built static PWA assets. Provides durable, low-cost static hosting for the app bundle.</td>
 </tr>
 <tr>
@@ -915,10 +929,6 @@
 <tr>
 <td><strong>Amazon RDS (Database)</strong></td>
 <td>Managed PostgreSQL instance that stores <code>users</code>, <code>dishes</code>, and <code>cooklogs</code>. Provides durable, backed-up relational storage for the app.</td>
-</tr>
-<tr>
-<td><strong>Amazon SES (Authentication / Email)</strong></td>
-<td>Used by the backend to send authentication emails, OTPs, and other transactional messages (as shown).</td>
 </tr>
 <tr>
 <td><strong>GitHub Actions (CI/CD)</strong></td>
@@ -968,10 +978,6 @@
 <p>Automated backups and snapshots.</p>
 </li>
 </ul>
-<h3 id="email-amazon-ses"><strong>Email (Amazon SES)</strong></h3>
-<ul>
-<li>Used for sending verification emails, OTPs, or notifications.</li>
-</ul>
 <hr />
 <h2 id="2-request-flow">2. Request Flow</h2>
 <ol>
@@ -987,10 +993,6 @@
 <p>FastAPI reads/writes data in <strong>RDS PostgreSQL</strong>.</p>
 </li>
 <li>
-<p>For authentication emails or OTP: 
-   FastAPI → SES → Email sent to user.</p>
-</li>
-<li>
 <p>Service Worker caches assets for fast loads &amp; offline mode.</p>
 </li>
 </ol>
@@ -998,7 +1000,7 @@
 <h2 id="4-deploy-checklist">4. Deploy Checklist</h2>
 <ol>
 <li>
-<p>Run tests (<code>pytest</code>, <code>vitest</code>).</p>
+<p>Run tests (<code>pytest</code>).</p>
 </li>
 <li>
 <p>Build frontend → upload to S3</p>
@@ -1020,7 +1022,7 @@
 <h2 id="5-future-scaling">5. Future Scaling</h2>
 <ul>
 <li>
-<p>Frontend auto-scales through CloudFront.</p>
+<p>SES for email related services.</p>
 </li>
 <li>
 <p>Backend can scale using:</p>

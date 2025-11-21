@@ -16,7 +16,7 @@
         <link rel="prev" href="../indexing/">
       
       
-        <link rel="next" href="../../setup/environment/">
+        <link rel="next" href="../../setup/frontend/">
       
       
       <link rel="icon" href="../../assets/ingredient.ico">
@@ -294,7 +294,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../setup/environment/" class="md-tabs__link">
+        <a href="../../setup/frontend/" class="md-tabs__link">
           
   
   
@@ -741,12 +741,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../setup/environment/" class="md-nav__link">
+      <a href="../../setup/frontend/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Environment
+    Frontend setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/backend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backend setup
     
   </span>
   
@@ -817,28 +840,17 @@
     E --&gt; F{"Credentials Valid?"}
     F -- Yes --&gt; G["Access Granted - Redirect to Dashboard"]
     F -- No --&gt; H["Show Error Message - Retry Option"]
-    H --&gt; I{"Forgot Password?"}
-    I -- Yes --&gt; J["Go to Forgot Password Page"]
-    I -- No --&gt; E
     D --&gt; K["Enter Details: Name, Email, Password"]
     K --&gt; L["Validate Input"]
     L -- Valid --&gt; M["Create Account"]
     L -- Invalid --&gt; N["Show Error Message"]
     M --&gt; O["Account Created Successfully"]
     O --&gt; C
-    J --&gt; P["Enter Registered Email"]
-    P --&gt; Q["Send Password Reset Link"]
-    Q --&gt; R["Check Email for Reset Link"]
-    R --&gt; S["Set New Password"]
-    S --&gt; T["Password Updated Successfully"]
-    T --&gt; C
     G --&gt; U(["End"])
 
     E@{ shape: lean-r}
-    P@{ shape: lean-r}
     K@{ shape: lean-r}
-    L@{ shape: diam}
-    S@{ shape: lean-r}</code></pre>
+    L@{ shape: diam}</code></pre>
 <h2 id="authorization-flow">Authorization Flow</h2>
 <pre class="mermaid"><code>flowchart TB
     n1["User"] --&gt; n2["Frontend"]
