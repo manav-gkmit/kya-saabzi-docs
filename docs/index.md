@@ -3,7 +3,7 @@
 **Kya Saabzi** is a simple dish recommendation app that aims to solve your everyday problem of  
 > *"Aaj kya banau?"*  
 
-[Click here](https://github.com/manav-gkmit/kya-saabzi-backend) to get started on how to use this app and download this for yourself.
+[Click here](setup/backend.md) to get started on how to use this app and download this for yourself.
 
 ---
 
@@ -62,4 +62,4 @@ With these features, Kya Saabzi brings structure and simplicity to meal planning
 - [Use Cases](use-cases/functional.md)
 - [Architecture](architecture/aws.md)
 - [Security](architecture/auth.md)
-- [Environment & Setup](setup/backend.md)
+- [Test Plan](test-plan/plan.md)
