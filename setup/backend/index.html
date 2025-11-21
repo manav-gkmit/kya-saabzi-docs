@@ -894,6 +894,7 @@
 and make sure you have privileges to create tables. Then create/configure <code>.env</code> file:</p>
 <div class="highlight"><pre><span></span><code><span class="go">DATABASE_URL=postgres://YourUserName:YourPassword@YourHostname:5432/mydb</span>
 <span class="go">SECRET_KEY=yoursecretkey</span>
+<span class="go">CORS_ORIGINS=[&quot;http://localhost:5173&quot;]</span>
 </code></pre></div>
 <h3 id="run-the-alembic-migrations">Run the alembic migrations</h3>
 <div class="highlight"><pre><span></span><code>alembic<span class="w"> </span>upgrade<span class="w"> </span>head
