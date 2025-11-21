@@ -33,3 +33,11 @@ Then you should see output like:
 VITE v7.2.2  ready in 500ms
 Local: http://localhost:5173/
 ```
+
+To connect with the backend make sure you have your `.env` file as:
+
+```console
+VITE_API_BASE_URL=http://localhost:8000
+```
+
+And poof... you should now be able to use the app locally!

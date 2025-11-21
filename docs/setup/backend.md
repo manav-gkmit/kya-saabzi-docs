@@ -33,6 +33,7 @@ and make sure you have privileges to create tables. Then create/configure `.env`
 ```console
 DATABASE_URL=postgres://YourUserName:YourPassword@YourHostname:5432/mydb
 SECRET_KEY=yoursecretkey
+CORS_ORIGINS=["http://localhost:5173"]
 ```
 
 ### Run the alembic migrations
