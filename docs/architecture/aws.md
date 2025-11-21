@@ -68,7 +68,7 @@ AWS specific architecture
 
 ---
 
-## 4. Deploy Checklist
+## 3. Deploy Checklist
 
 1. Run tests (`pytest`).
 
@@ -84,7 +84,7 @@ AWS specific architecture
 
 ---
 
-## 5. Future Scaling
+## 4. Future Scaling
 
 - SES for email related services.
 
