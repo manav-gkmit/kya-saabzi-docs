@@ -67,7 +67,6 @@ Tools: **Vitest**, **React Testing Library**, **Playwright**
 ---
 
 ### 4.3 End-to-End (E2E) Tests
-Tools: **Playwright** or **Cypress**
 
 E2E flows include:
 - User registration → Login → Dashboard access
@@ -146,11 +145,9 @@ Tests will be organized mirroring the application's source code structure.
 
 - Dashboard
 
-- Add Dish
+- Add Dish page
 
 - Cooklog history list
-
-- Dish search UI
 
 - Recommendations page
 
